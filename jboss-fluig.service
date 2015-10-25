@@ -1,0 +1,21 @@
+[Unit]
+Description=Jboss Application Server
+After=network.target
+
+## JBoss Bootstrap Environment
+## JBOSS_HOME: /opt/fluig/jboss
+## JAVA: /opt/fluig/jdk-64/bin/java
+
+[Service]
+Type=idle
+Environment=JAVA_HOME=/usr/lib/jvm/java JBOSS_HOME=/opt/fluig/jboss JAVA=/opt/fluig/jdk-64/bin/java JBOSS_LOG_DIR=/var/log/jboss "JAVA_OPTS=-XX:+UseCompressedOops -verbose:gc -Xloggc:"/opt/fluig/jboss/standalone/log/gc.log" -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=3M -XX:-TraceClassUnloading -server  -Djboss.modules.system.pkgs= -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Xms1g -Xmx512m -XX:MaxPermSize=512m -XX:+UseG1GC -Xloggc:gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:-TraceClassUnloading -Dfile.encoding=utf8 -Djsse.enableSNIExtension=false"
+
+User=jboss
+Group=jboss
+
+ExecStart=/opt/fluig/jboss/bin/standalone.sh
+TimeoutStartSec=600
+TimeoutStopSec=600
+
+[Install]
+WantedBy=multi-user.target

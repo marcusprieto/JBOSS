@@ -1,0 +1,16 @@
+A) Add new zipped content and deploy it:
+
+1. cp target/example.war/ $AS/standalone/deployments
+2. (Manual mode only) touch $AS/standalone/deployments/example.war.dodeploy
+
+B) Add new unzipped content and deplo1. cp -r target/example.war/ $AS/standalone/deployments
+2. (Manual mode only) touch $AS/standalone/deployments/example.war.dodeploy
+
+C) Undeploy currently deployed content:
+
+1. rm $AS/standalone/deployments/example.war.deployed
+
+D) Auto-deploy mode only: Undeploy currently deployed content:
+
+1. rm $AS/standalone/deployments/example.war
+
